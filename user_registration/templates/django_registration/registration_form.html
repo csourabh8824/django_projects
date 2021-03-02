@@ -1,0 +1,20 @@
+{% extends 'django_registration/base_template.html' %}
+{% load static %}
+{% block content %}
+    <br>
+    <form action="" method="post" novalidate>
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="fieldWrapper">                
+                {{field.label_tag}}  {{field}} <br><br>
+                {% if field.errors %}
+                    {{field.errors}}
+                {% endif %}                
+            </div>            
+        {% endfor %}        
+        <input class="btn btn-primary btn-sm" type="submit" value="Register">   
+    </form>
+    <br>
+    <a href="{% url 'home' %}" class="btn btn-warning btn-sm">Back To Home</a>
+{% endblock content %}    
+    
