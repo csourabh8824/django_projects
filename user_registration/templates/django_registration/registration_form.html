@@ -13,8 +13,21 @@
             </div>            
         {% endfor %}        
         <input class="btn btn-primary btn-sm" type="submit" value="Register">   
+        <a href="{% url 'home' %}" class="btn btn-warning btn-sm">Back To Home</a>
+    </form><br>
+    <h2>Buy for 100 $ per month</h2>
+    <form action="{% url 'charge' %}" method="post">
+        {% csrf_token %}
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="{{ key }}"
+            data-description="Payment Gateway"
+            data-amount="10000"
+            data-locale="auto">
+        </script>
     </form>
-    <br>
-    <a href="{% url 'home' %}" class="btn btn-warning btn-sm">Back To Home</a>
+    
+        
+    
+     
 {% endblock content %}    
     
